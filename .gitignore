@@ -1,8 +1,10 @@
 # Dependencies
 node_modules/
+client/node_modules/
 
 # Environment variables (never commit secrets)
 .env
+client/.env
 
 # Logs
 logs/
