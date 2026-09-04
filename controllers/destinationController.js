@@ -29,12 +29,17 @@ async function getOne(req, res) {
 
 async function create(req, res) {
   try {
-    const { name, district, category, description } = req.body;
+    const { name, district, category, description, imageUrl, entryFeeLKR, recommendedDays, bestSeasonMonths, travelTip, estimatedDailyCostLKR } = req.body;
     if (!name || !district || !category || !description) {
       return res.status(400).json({ error: "Name, district, category, and description are required" });
     }
 
-    const destination = await destinationService.createDestination(req.body);
+    // Only pass known fields — never pass raw req.body directly
+    const destination = await destinationService.createDestination({
+      name, district, category, description,
+      imageUrl, entryFeeLKR, recommendedDays,
+      bestSeasonMonths, travelTip, estimatedDailyCostLKR
+    });
     res.status(201).json(destination);
   } catch (error) {
     console.error("Create Destination Error:", error);
