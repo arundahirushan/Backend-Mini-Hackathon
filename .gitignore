@@ -1,8 +1,10 @@
 # Dependencies
-node_modules/
+server/node_modules/
+client/node_modules/
 
 # Environment variables (never commit secrets)
-.env
+server/.env
+client/.env
 
 # Logs
 logs/
@@ -16,3 +18,6 @@ Thumbs.db
 # Editor folders
 .vscode/
 .idea/
+
+# Build output
+client/dist/
